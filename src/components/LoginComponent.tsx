@@ -1,30 +1,104 @@
 
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 
 export default function LoginComponent() {
+    // const userImage = new Image();
+    // userImage.src = "/assets/add_photo.svg";
+  
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [isStarted, setIsStarted]= useState(false);
+    const navigate= useNavigate();
+    const { register, getValues, handleSubmit } = useForm();
+    const handleUpload = (e:any) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+    
+        reader.onload = (e:any) => {
+          localStorage.setItem('myPhoto', e.target.result);
+          setSelectedFile(e.target.result);
+        };
+    
+        reader.readAsDataURL(file);
+    }
+    const onSubmit = () => {
+        console.log(getValues("name"));
+        navigate("/user");
+        localStorage.setItem("name", getValues("name"));
+
+    }
   return (
-    <Login>
+    <Div>
+    <Login display={!isStarted? "none" : "flex"} >
         <H1>Get Started</H1>
         <P>add a photo</P>
-        <Add>
+        {/* <Add>
             <img src="/assets/add_photo.svg" alt="" />
+        </Add> */}
+        <form action="" onSubmit={handleSubmit(onSubmit)}>
+        <Add htmlFor="" onChange={handleUpload}>
+        <Img src="/assets/add_photo.svg" alt="" />
+            <AddInput type="file" {...register("photo")} required/>
         </Add>
-        <form action="">
+        
        <Label>
          fill in your name
-        <Input type="text" placeholder='your name'/>
+        <Input type="text" placeholder='your name'{...register("name")} required/>
         <Button>Sign in</Button>
        </Label>
        </form>
     </Login>
+    <Starter display={isStarted? "none" : "flex"}>
+        <img src="/assets/done.svg" alt="" />
+        <H1Start>Keep Track Of Daily Tasks In Life</H1Start>
+        <ButtonStart onClick={()=>setIsStarted(true)}>Get Started</ButtonStart>
+    </Starter>
+    </Div>
   )
 }
 
+const Div = styled.div`
+    padding: 2.5rem 1.25rem;
+`
+const Starter = styled.div<any>`
+    display: ${(props) => props.display};
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-align: center;
+   
+`
+const ButtonStart = styled.button`
+    margin-top: 5rem;
+    /* margin-bottom:20vh; */
+    background: #5EFC8D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    padding: 0.6875rem 3.6875rem 0.625rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    :hover{
+background: black;
+color: white;
+    }
+    @media (min-width: 588px){
+        margin-top: 160px;
+    }
+`
+const H1Start = styled.h1`
+    margin-top: 2.875rem;
+    font-size: 3rem;
+`
 
-const Login = styled.div`
+const Login = styled.div<any>`
 width: 100%;
 background-color: #FFFFFF;
-display: flex;
+display: ${(props) => props.display};
 flex-direction: column;
 height: 100%;
 text-align: center;
@@ -55,20 +129,45 @@ const P = styled.p`
     font-weight: light;
 `
 
-const Add = styled.button`
-    width: 7.625rem;
-    height: 7.625rem;
-    border-radius: 50%;
-    background: #E6EBFF;
-    margin: 0.625rem auto 3.3125rem;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    :hover {
-        background: #5EFC8D
+// const Add = styled.button`
+//     width: 7.625rem;
+//     height: 7.625rem;
+//     border-radius: 50%;
+//     background: #E6EBFF;
+//     margin: 0.625rem auto 3.3125rem;
+//     border: none;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+    
+//     :hover {
+//         background: #5EFC8D
+//     }
+// `
+
+const Add = styled.label`
+     width: 7.625rem;
+     height: 7.625rem;
+     border-radius: 50%;
+     background: #E6EBFF;
+     margin: 0.625rem auto 3.3125rem;
+     border: none;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: relative;
+     :hover {
+         background: #5EFC8D
     }
+`
+const Img = styled.img`
+    position: absolute;
+`
+const AddInput = styled.input`
+    opacity: 0;
+    width: 7.625rem;
+     height: 7.625rem;
+     cursor: pointer;
 `
 
 const Input = styled.input`

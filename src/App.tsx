@@ -1,18 +1,26 @@
 import styled from "styled-components";
 import GlobalStylesComponent from "./components/GlobalStylesComponent";
 import LoginComponent from "./components/LoginComponent";
+import { Route, Routes } from "react-router-dom";
+import UserPageComponent from "./components/UserPageComponent";
+import Test from "./components/test";
 
 
 function App() {
+  
 
 
   return (
    
      <Main>
-     <GlobalStylesComponent/>
-     <LoginComponent/>
+      <GlobalStylesComponent/>
+      <Routes>
+        <Route path="/" element={<LoginComponent/>}/>
+        <Route path="/user" element={<UserPageComponent/>}/>
+     </Routes>
     
      </Main>
+    // <Test/>
   )
 }
 
@@ -24,7 +32,7 @@ height: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
-padding: 2.5rem 1.25rem;
+
   
 `
 
