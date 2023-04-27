@@ -3,7 +3,7 @@ import GlobalStylesComponent from "./components/GlobalStylesComponent";
 import LoginComponent from "./components/LoginComponent";
 import { Route, Routes } from "react-router-dom";
 import UserPageComponent from "./components/UserPageComponent";
-import Test from "./components/test";
+
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
      </Routes>
     
      </Main>
-    // <Test/>
+    
   )
 }
 

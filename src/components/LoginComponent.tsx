@@ -8,7 +8,7 @@ export default function LoginComponent() {
     // const userImage = new Image();
     // userImage.src = "/assets/add_photo.svg";
   
-    const [selectedFile, setSelectedFile] = useState(null);
+    // const [selectedFile, setSelectedFile] = useState<any>(null);
     const [isStarted, setIsStarted]= useState(false);
     const navigate= useNavigate();
     const { register, getValues, handleSubmit } = useForm();
@@ -18,7 +18,7 @@ export default function LoginComponent() {
     
         reader.onload = (e:any) => {
           localStorage.setItem('myPhoto', e.target.result);
-          setSelectedFile(e.target.result);
+        //   setSelectedFile(e.target.result);
         };
     
         reader.readAsDataURL(file);
