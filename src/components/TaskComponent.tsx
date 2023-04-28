@@ -4,18 +4,21 @@ import styled from "styled-components";
 
 export default function TaskComponent() {
 
+  interface Task {
+    value: string;
+    isDone: boolean;
+  }
 
 
-
-  const [taskColorIndex, setTaskColorIndex] = useState(-1)
-  const [addTask, setAddTask] = useState<any>([
+  // const [taskColorIndex, setTaskColorIndex] = useState(-1)
+  const [addTask, setAddTask] = useState<Task[] | any >([
    { value:"Homework", isDone: false},
    { value:"Grocery Shopping", isDone: false},
    { value:"Homework", isDone: false},
     {value:"Grocery Shopping", isDone: false},
   ]);
 
-  const [newArray, setNewArray] = useState([...addTask]);
+  const [newArray, setNewArray] = useState<any>([...addTask]);
  
   const [inputValue, setInputValue] = useState<any>("");
 
@@ -37,23 +40,21 @@ export default function TaskComponent() {
   };
 
   const doneTask = (index: any) => {
-    // console.log('index: ', index);
-    // setTaskColorIndex(index);
-    // console.log("taskColorIndex: ", taskColorIndex);
-
     addTask[index].isDone = true;
     setNewArray([...addTask]);
 
   }
-
+ 
+  
   useEffect(() => {
-    localStorage.setItem("arr", JSON.stringify(addTask))
+   
+    localStorage.setItem("arr", JSON.stringify(addTask));
+    setNewArray(addTask)
 
-    const arrLocal = JSON.parse(localStorage.getItem("arr"));
-    console.log(arrLocal)
-    setNewArray(arrLocal)
   },[addTask])
   
+
+
   return (
     <Main>
       <LoginMain>

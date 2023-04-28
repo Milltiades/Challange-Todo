@@ -48,10 +48,7 @@ const [newArray, setNewArray] = useState([...arr]);
   };
   
  useEffect(() => {
-    
-   
      localStorage.setItem("arr", JSON.stringify(arr))
-
      const arrLocal = JSON.parse(localStorage.getItem("arr"));
      console.log(arrLocal)
      setNewArray(arrLocal)
