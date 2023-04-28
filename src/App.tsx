@@ -4,6 +4,8 @@ import LoginComponent from "./components/LoginComponent";
 import { Route, Routes } from "react-router-dom";
 import UserPageComponent from "./components/UserPageComponent";
 import StarterComponent from "./components/StarterComponent";
+import Test from "./components/test";
+import Test2 from "./components/Test2";
 
 
 
@@ -20,7 +22,9 @@ function App() {
         <Route path="/login" element={<LoginComponent/>}/>
         <Route path="/user" element={<UserPageComponent/>}/>
      </Routes>
-    
+
+     {/* <Test/> */}
+   
      </Main>
     
   )

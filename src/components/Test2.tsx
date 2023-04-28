@@ -2,63 +2,110 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
-export default function TaskComponent() {
-
-
-
-
-  const [taskColorIndex, setTaskColorIndex] = useState(-1)
-  const [addTask, setAddTask] = useState<any>([
-   { value:"Homework", isDone: false},
-   { value:"Grocery Shopping", isDone: false},
-   { value:"Homework", isDone: false},
-    {value:"Grocery Shopping", isDone: false},
-  ]);
-
-  const [newArray, setNewArray] = useState([...addTask]);
- 
-  const [inputValue, setInputValue] = useState<any>("");
-
-  const { handleSubmit, register, reset } = useForm<any>();
-
-  const handleCHange = (e: any) => {
-    setInputValue( {value:e.target.value, isDone: false});
-  };
-  const onSubmit = () => {
-      setAddTask([...addTask, inputValue]);
-      reset();
-  };
+export default function Test2() {
+    const { handleSubmit, register } = useForm<any>();
+    const [inputValue, setInputValue] = useState<any>("");
+    const [arr, setArr] = useState<any>([
+      {
+        value: "work 1",
+        workDone: false,
+      },
+      {
+        value: "work 2",
+        workDone: false,
+      },
+      {
+        value: "work 3",
+        workDone: false,
+      },
+      {
+        value: "work 4",
+        workDone: false,
+      },
+    ]);
+  const [newArray, setNewArray] = useState([...arr]);
+    const handleCHange = (e: any) => {
+      setInputValue({
+        
+        value: e.target.value,
+        workDone: false,
+      });
+    };
+    const addFunc = () => {
+      setArr([...arr, inputValue]);
+    };
+    const removeFunc = (index: any) => {
+      const newArr = [...arr];
+      newArr.splice(index, 1);
+      setArr(newArr);
+    };
   
-  const removeTask = (index: any) => {
-    const newArr = [...addTask];
-    newArr.splice(index, 1);
-    setAddTask(newArr);
+    const changeColor = (index: any) => {
+      console.log(arr[index].workDone)
+     arr[index].workDone = true;
+     setNewArray([...arr]);
+      
+     
+    };
+    
+   useEffect(() => {
+      
+     
+       localStorage.setItem("arr", JSON.stringify(arr))
+  
+    //    const arrLocal = JSON.parse(localStorage.getItem("arr"));
+    //    console.log(arrLocal)
+    //    setNewArray(arrLocal)
+   }, [arr]);
+  
+
+  
+///////////
+//   const [taskColorIndex, setTaskColorIndex] = useState(-1)
+//   const [addTask, setAddTask] = useState<any>([
+//     "Homework",
+//     "Grocery Shopping",
+//     "Homework",
+//     "Grocery Shopping",
+//   ]);
+ 
+//   const [inputValue, setInputValue] = useState<any>("");
+
+//   const { handleSubmit, register, getValues } = useForm<any>();
+
+//   const handleCHange = (e: any) => {
+//     setInputValue(e.target.value);
+//   };
+//   const onSubmit = () => {
    
-  };
+//       setAddTask([...addTask, inputValue]);
+//       console.log(getValues("task"));
+    
+//   };
+  
+//   const removeTask = (index: any) => {
+//     const newArray = [...addTask];
+//     newArray.splice(index, 1);
+//     setAddTask(newArray);
+   
+//   };
 
-  const doneTask = (index: any) => {
-    // console.log('index: ', index);
-    // setTaskColorIndex(index);
-    // console.log("taskColorIndex: ", taskColorIndex);
+//   const doneTask = (index: any) => {
+//     console.log('index: ', index);
+//     setTaskColorIndex(index);
+//     console.log("taskColorIndex: ", taskColorIndex);
 
-    addTask[index].isDone = true;
-    setNewArray([...addTask]);
+//   }
 
-  }
-
-  useEffect(() => {
-    localStorage.setItem("arr", JSON.stringify(addTask))
-
-    const arrLocal = JSON.parse(localStorage.getItem("arr"));
-    console.log(arrLocal)
-    setNewArray(arrLocal)
-  },[addTask])
+//   useEffect(() => {
+//    localStorage.setItem('taskArray', addTask)
+//   },[addTask])
   
   return (
     <Main>
       <LoginMain>
       <H1>Add Your Daily Tasks</H1>
-      <form action="" onSubmit={handleSubmit(onSubmit)}>
+      <form action="" onSubmit={handleSubmit(addFunc)}>
         <Label htmlFor="">
           <Input
             type="text"
@@ -72,13 +119,13 @@ export default function TaskComponent() {
       </form>
       {newArray.map((item: any, index: any) => {
         return (
-          <Task key={index} background={item.isDone? "#E6EBFF" : "black"}>
-            <p>{item.value}</p>
+          <Task key={index} background={newArray[index].workDone ? "#E6EBFF" : "black"}>
+            <p>{item}</p>
             <TaskBTN>
-              <IconBtnDone onClick={() => doneTask(index)}>
+              <IconBtnDone onClick={() => changeColor(index)}>
                 <img src="/assets/doneT.svg" alt="" />
               </IconBtnDone>
-              <IconBtnRemove onClick={() => removeTask(index)}>
+              <IconBtnRemove onClick={() => removeFunc(index)}>
                 <img src="/assets/remove.svg" alt="" />
               </IconBtnRemove>
             </TaskBTN>
