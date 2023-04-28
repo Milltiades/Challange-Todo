@@ -1,15 +1,11 @@
 
-import { useState } from 'react';
+
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 
 export default function LoginComponent() {
-    // const userImage = new Image();
-    // userImage.src = "/assets/add_photo.svg";
   
-    // const [selectedFile, setSelectedFile] = useState<any>(null);
-    const [isStarted, setIsStarted]= useState(false);
     const navigate= useNavigate();
     const { register, getValues, handleSubmit } = useForm();
     const handleUpload = (e:any) => {
@@ -18,7 +14,7 @@ export default function LoginComponent() {
     
         reader.onload = (e:any) => {
           localStorage.setItem('myPhoto', e.target.result);
-        //   setSelectedFile(e.target.result);
+       
         };
     
         reader.readAsDataURL(file);
