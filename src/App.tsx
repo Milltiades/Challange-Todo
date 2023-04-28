@@ -3,6 +3,7 @@ import GlobalStylesComponent from "./components/GlobalStylesComponent";
 import LoginComponent from "./components/LoginComponent";
 import { Route, Routes } from "react-router-dom";
 import UserPageComponent from "./components/UserPageComponent";
+import StarterComponent from "./components/StarterComponent";
 
 
 
@@ -15,7 +16,8 @@ function App() {
      <Main>
       <GlobalStylesComponent/>
       <Routes>
-        <Route path="/" element={<LoginComponent/>}/>
+        <Route path="/" element={<StarterComponent/>}/>
+        <Route path="/login" element={<LoginComponent/>}/>
         <Route path="/user" element={<UserPageComponent/>}/>
      </Routes>
     

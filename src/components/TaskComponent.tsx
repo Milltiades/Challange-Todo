@@ -38,6 +38,7 @@ export default function TaskComponent() {
   
   return (
     <Main>
+      <LoginMain>
       <H1>Add Your Daily Tasks</H1>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <Label htmlFor="">
@@ -66,9 +67,18 @@ export default function TaskComponent() {
           </Task>
         );
       })}
+      </LoginMain>
     </Main>
   );
 }
+
+const LoginMain = styled.div`
+   @media (min-width: 588px){
+    width: 36.75rem;
+    margin: 35px auto;
+  }
+`
+
 const IconBtn = styled.button`
   margin-left: 29px;
   border: none;
@@ -101,6 +111,7 @@ const Main = styled.div`
   text-align: center;
   padding: 0 24px;
   color: white;
+ 
 `;
 const Button = styled.button`
   background: #5efc8d;
@@ -137,4 +148,8 @@ const Label = styled.label`
 const H1 = styled.h1`
   font-size: 1.7rem;
   margin-top: 2.2rem;
+  color: black;
+  @media (min-width: 588px){
+    font-size: 42px;
+  }
 `;
