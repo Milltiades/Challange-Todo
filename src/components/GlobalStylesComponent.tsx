@@ -1,12 +1,8 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export default function GlobalStylesComponent() {
-  return (
-    <GlobalStyles/>
-  )
+  return <GlobalStyles />;
 }
-
-
 
 const GlobalStyles = createGlobalStyle`
     :root {
@@ -26,6 +22,7 @@ html{
   box-sizing: border-box;
  overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
+  
 
 }
 
@@ -38,6 +35,8 @@ body {
  
 }
 
+button {
+  transition: all 0.5s ease;
+}
 
-
-`
+`;
