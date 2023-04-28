@@ -38,7 +38,7 @@ const ButtonStart = styled.button`
 background: black;
 color: white;
     }
-    @media (min-width: 588px){
+    @media (min-width: 595px){
         margin-top: 160px;
     }
 `

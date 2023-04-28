@@ -10,7 +10,7 @@ export default function TaskComponent() {
   }
 
 
-  // const [taskColorIndex, setTaskColorIndex] = useState(-1)
+
   const [addTask, setAddTask] = useState<Task[] | any >([
    { value:"Homework", isDone: false},
    { value:"Grocery Shopping", isDone: false},
@@ -74,7 +74,7 @@ export default function TaskComponent() {
       {newArray.map((item: any, index: any) => {
         return (
           <Task key={index} background={item.isDone? "#E6EBFF" : "black"}>
-            <p>{item.value}</p>
+            <P>{item.value}</P>
             <TaskBTN>
               <IconBtnDone onClick={() => doneTask(index)}>
                 <img src="/assets/doneT.svg" alt="" />
@@ -90,11 +90,20 @@ export default function TaskComponent() {
     </Main>
   );
 }
+const P = styled.p`
+
+text-transform: capitalize;
+@media (min-width: 595px){
+    font-size: 1.375rem;
+    font-weight: 300;
+    line-height: 1.9375rem;
+  }
+`
 
 const LoginMain = styled.div`
-   @media (min-width: 588px){
-    width: 36.75rem;
-    margin: 35px auto;
+   @media (min-width: 595px){
+    width: 595px;
+    margin: 0 auto;
   }
 `
 
@@ -131,6 +140,7 @@ const Task = styled.div<any>`
   border-radius: 4px;
   height: 54px;
   
+  
 `;
 const TaskBTN = styled.div`
   display: flex;
@@ -153,14 +163,21 @@ const Button = styled.button`
   background: #5efc8d;
   border: none;
   border-radius: 4px;
-  padding: 1rem 1.375rem;
+  padding: 1rem;
   color: black;
   font-size: 1.7rem;
+  line-height: 2.34rem;
+  
   cursor: pointer;
   :hover{
     background: black;
     color: white;
   }
+  @media (min-width: 595px) {
+    line-height: 2.8125rem;
+    padding: 1rem 1.375rem 0.9375rem 1.375rem;
+ font-size: 2rem;
+ }
 `;
 
 const Input = styled.input`
@@ -170,9 +187,15 @@ const Input = styled.input`
   background: #e6ebff;
   color: black;
   font-size: 1.175rem;
-  padding: 1.375rem 0 1.375rem 1.5rem;
+  padding: 1.2rem;
+  line-height: 1.9375rem;
+  font-weight: 300;
+  text-transform: lowercase;
   ::placeholder {
     opacity: 0.2;
+  }
+  @media (min-width: 595px){
+padding: 1.375rem 0 1.375rem 1.5rem;
   }
 `;
 
@@ -186,10 +209,12 @@ const Label = styled.label`
 `;
 
 const H1 = styled.h1`
+font-weight: 600;
   font-size: 1.7rem;
-  margin-top: 2.2rem;
+  line-height: 3.6875rem;
+  margin-top: 2.1875rem;
   color: black;
-  @media (min-width: 588px){
-    font-size: 42px;
+  @media (min-width: 595px){
+    font-size: 2.625rem;
   }
 `;

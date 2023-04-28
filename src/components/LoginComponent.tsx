@@ -65,7 +65,7 @@ height: 100%;
 text-align: center;
 border-radius: 4px;
 padding: 33px 24px 63px 24px;
-@media (min-width: 588px){
+@media (min-width: 595px){
     padding: 33px 50px 63px 51px;
     width: 36.75rem;
 }

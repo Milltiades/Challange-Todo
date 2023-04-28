@@ -12,9 +12,9 @@ export default function UserPageComponent() {
   return (
     <Div>
     <Header>
-        <h1>TO DO</h1>
+        <H1>TO DO</H1>
         <DivUser>
-            <p>{userName && userName}</p>
+            <P>{userName && userName}</P>
             <Img img={`url(${getFile})`}/>
         </DivUser>
     </Header>
@@ -22,7 +22,18 @@ export default function UserPageComponent() {
     </Div>
   )
 }
+const P = styled.p`
+    font-weight: 300;
+    font-size: 1.375rem;
+    line-height: 1.9375rem;
+    text-transform: capitalize;
+`
 
+const H1 = styled.h1`
+    font-weight: 900;
+    line-height: 3.1875rem;
+    
+`
 const Img = styled.div<any>`
     width: 4.25rem;
     height: 4.25rem;
