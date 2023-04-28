@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
 export default function TaskComponent() {
-  // const [done, setDone] = useState(null);
+  
   const [addTask, setAddTask] = useState<any>([
     "Homework",
     "Grocery Shopping",
@@ -11,9 +11,7 @@ export default function TaskComponent() {
     "Grocery Shopping",
   ]);
   const [inputValue, setInputValue] = useState<any>("");
-  const changeColor = (index:any) => {
-        // setDone(index)
-  }
+
   const { handleSubmit, register, getValues } = useForm<any>();
 
   const handleCHange = (e: any) => {
@@ -57,7 +55,7 @@ export default function TaskComponent() {
           <Task key={index}>
             <p>{item}</p>
             <TaskBTN>
-              <IconBtn onClick={() => changeColor(index)}>
+              <IconBtn >
                 <Icon src="/assets/doneT.svg" alt="" />
               </IconBtn>
               <IconBtn onClick={() => removeTask(index)}>
