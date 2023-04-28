@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
@@ -31,6 +31,11 @@ export default function TaskComponent() {
     newArray.splice(index, 1);
     setAddTask(newArray);
   };
+
+  useEffect(() => {
+   localStorage.setItem('taskArray', addTask)
+  },[addTask])
+  
   return (
     <Main>
       <H1>Add Your Daily Tasks</H1>
