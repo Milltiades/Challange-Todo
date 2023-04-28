@@ -6,7 +6,7 @@ export default function StarterComponent() {
     const navigate = useNavigate();
   return (
     <Starter>
-        <img src="/assets/done.svg" alt="" />
+        <img src="/assets/starterLogo.svg" alt="" />
         <H1Start>Keep Track Of Daily Tasks In Life</H1Start>
         <ButtonStart onClick={() => navigate('login')}>Get Started</ButtonStart>
     </Starter>

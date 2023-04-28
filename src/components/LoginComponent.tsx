@@ -50,11 +50,7 @@ export default function LoginComponent() {
        </Label>
        </form>
     </Login>
-    {/* <Starter display={isStarted? "none" : "flex"}>
-        <img src="/assets/done.svg" alt="" />
-        <H1Start>Keep Track Of Daily Tasks In Life</H1Start>
-        <ButtonStart onClick={()=>setIsStarted(true)}>Get Started</ButtonStart>
-    </Starter> */}
+   
     </Div>
   )
 }
@@ -62,38 +58,7 @@ export default function LoginComponent() {
 const Div = styled.div`
     padding: 2.5rem 1.25rem;
 `
-// const Starter = styled.div<any>`
-//     display: ${(props) => props.display};
-//     flex-direction: column;
-//     align-items: center;
-//     color: white;
-//     text-align: center;
-   
-// `
-// const ButtonStart = styled.button`
-//     margin-top: 5rem;
-//     /* margin-bottom:20vh; */
-//     background: #5EFC8D;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     font-size: 32px;
-//     padding: 0.6875rem 3.6875rem 0.625rem;
-//     border-radius: 4px;
-//     border: none;
-//     cursor: pointer;
-//     :hover{
-// background: black;
-// color: white;
-//     }
-//     @media (min-width: 588px){
-//         margin-top: 160px;
-//     }
-// `
-// const H1Start = styled.h1`
-//     margin-top: 2.875rem;
-//     font-size: 3rem;
-// `
+
 
 const Login = styled.div`
 width: 100%;
@@ -129,21 +94,7 @@ const P = styled.p`
     font-weight: light;
 `
 
-// const Add = styled.button`
-//     width: 7.625rem;
-//     height: 7.625rem;
-//     border-radius: 50%;
-//     background: #E6EBFF;
-//     margin: 0.625rem auto 3.3125rem;
-//     border: none;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-    
-//     :hover {
-//         background: #5EFC8D
-//     }
-// `
+
 
 const Add = styled.label`
      width: 7.625rem;

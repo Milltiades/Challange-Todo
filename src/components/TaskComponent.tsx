@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
 export default function TaskComponent() {
-  const [done, setDone] = useState(null);
+  // const [done, setDone] = useState(null);
   const [addTask, setAddTask] = useState<any>([
     "Homework",
     "Grocery Shopping",
@@ -12,7 +12,7 @@ export default function TaskComponent() {
   ]);
   const [inputValue, setInputValue] = useState<any>("");
   const changeColor = (index:any) => {
-        setDone(index)
+        // setDone(index)
   }
   const { handleSubmit, register, getValues } = useForm<any>();
 
@@ -54,7 +54,7 @@ export default function TaskComponent() {
       </form>
       {addTask.map((item: any, index: any) => {
         return (
-          <Task key={index} background={done === index ? "#EDEDED" : "black"}>
+          <Task key={index}>
             <p>{item}</p>
             <TaskBTN>
               <IconBtn onClick={() => changeColor(index)}>
@@ -86,17 +86,20 @@ const IconBtn = styled.button`
   cursor: pointer;
 `;
 const Icon = styled.img``;
-const Task = styled.div<any>`
+const Task = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  background: ${(props) => props.background};
+  background: black;
   color: white;
   align-items: center;
   margin-bottom: 16px;
   padding: 11.5px 11.7px 11.5px 24px;
   border-radius: 4px;
+  :hover {
+   background: #EDEDED
+  }
 `;
 const TaskBTN = styled.div`
   display: flex;
