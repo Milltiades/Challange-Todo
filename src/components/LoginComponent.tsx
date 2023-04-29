@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function LoginComponent() {
   const navigate = useNavigate();
+ 
   const { register, getValues, handleSubmit } = useForm();
   const handleUpload = (e: any) => {
     const file = e.target.files[0];
@@ -19,7 +21,15 @@ export default function LoginComponent() {
     console.log(getValues("name"));
     navigate("/user");
     localStorage.setItem("name", getValues("name"));
+    
   };
+
+  useEffect(() => {
+if(localStorage.getItem("name") && localStorage.getItem("myPhoto")){
+  navigate("/user");
+} 
+
+},[]);
   return (
     <Div>
       <Login>

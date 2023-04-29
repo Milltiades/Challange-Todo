@@ -13,6 +13,13 @@ export default function UserPageComponent() {
     setUserName(localStorage.getItem("name"));
     setGetFile(localStorage.getItem("myPhoto"));
   }, ["/user"]);
+  useEffect(() => {
+if(localStorage.getItem("name") && localStorage.getItem("myPhoto")){
+  navigate('/user')
+} else {
+  navigate("/login")
+}
+  }, [])
   return (
     <Div>
       <Header>
